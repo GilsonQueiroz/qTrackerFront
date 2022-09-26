@@ -5,9 +5,9 @@ angular.module('primeiraApp').config([
     $stateProvider.state('dashboard', {
       url: "/dashboard",
       templateUrl: "dashboard/dashboard.html"
-    }).state('billingCycle', {
-      url: "/billingCycles?page",
-      templateUrl: "billingCycle/tabs.html"
+    }).state('gameSave', {
+      url: "/gameSave?page",
+      templateUrl: "gameSave/tabs.html"
     })
 
     $urlRouterProvider.otherwise('/dashboard')
