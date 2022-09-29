@@ -1,11 +1,10 @@
 <content-header name="Game" small="Quest Tracker"></content-header>
 
-<section class="content">
+<section class="content" ng-controller="DashboardCtrl as dashboard">
     <div class="row">
-        <girl-box grid="1" color-class="bg-aqua-active" name="Allison" value="10" text="LOVE"></girl-box>
-        <girl-box grid="1" color-class="bg-aqua-active" name="Maisie" value="12" text="LOVE"></girl-box>
+        <girl-box grid="1" color-class="bg-aqua-active" name="{{ dashboard.girls[0].name }}" value="{{ dashboard.girls[0].value }}" text="{{ dashboard.girls[0].desc }}"></girl-box>
     </div>
     <div class="row">
-        <item-box grid="1" color-class="bg-green" icon="fa-solid fa-person-swimming" value="5" text="SWIMMER"></item-box>
+        <item-box grid="1" color-class="bg-green" icon="{{ dashboard.itens[0].icon }}" value="{{ dashboard.itens[0].value }}" text="{{ dashboard.itens[0].name }}"></item-box>
     </div>
 </section>
