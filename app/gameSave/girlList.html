@@ -1,0 +1,27 @@
+<div class="box-body">
+    <h1>{{gsCtrl.save.game}}</h1><button class="btn btn-default" ng-click="gsCtrl.refreshSave()">Voltar</button>
+
+    <table class="table">
+        <thread>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Ações</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr ng-repeat="girl in gsCtrl.girls">
+                <td>{{ girl.name }}</td>
+                <td>{{ girl.desc }}</td>
+                <td>{{ girl.value }}</td>
+                <td class="table-actions">
+                    <button class="btn btn-warning" ng-click="gsCtrl.showTabGirlUpdate(girl)">
+                        <i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger" ng-click="gsCtrl.showTabGirlDelete(girl)">
+                        <i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

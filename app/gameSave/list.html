@@ -1,0 +1,31 @@
+<div class="box-body">
+    <table class="table">
+        <thread>
+            <tr>
+                <th>Nome</th>
+                <th>Slug</th>
+                <th>Ações</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr ng-repeat="save in gsCtrl.saves">
+                <td>{{ save.game }}</td>
+                <td>{{ save.slug }}</td>
+                <td class="table-actions">
+                    <button class="btn btn-info">
+                        <i class="fa-solid fa-calendar-days"></i></button>
+                    <button class="btn btn-info" ng-click="gsCtrl.refreshGirl(save)">
+                        <i class="fa-solid fa-user"></i></button>
+                    <button class="btn btn-info">
+                        <i class="fa-solid fa-boxes-packing"></i></button>
+                    <button class="btn btn-info">
+                        <i class="fa-solid fa-list-check"></i></button>
+                    <button class="btn btn-warning" ng-click="gsCtrl.showTabUpdate(save)">
+                        <i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger" ng-click="gsCtrl.showTabDelete(save)">
+                        <i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

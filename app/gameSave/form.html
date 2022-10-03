@@ -1,14 +1,18 @@
 <div role="form">
     <div class="box-body">
-        <field id="game" label="Jogo" grid="12 6 4" placeholder="Informe o jogo..."></field>
-        <field id="slug" label="Slug" grid="12 6 4" placeholder="Informe o Slug do jogo..."></field>
-        <field id="initialDay" label="Dia Inicial" grid="12 6 2" placeholder="Dia Inicial" type="number"></field>
-        <field id="actualDay" label="Dia Atual" grid="12 6 2" placeholder="Dia atual" type="number"></field>
+        <field id="game" label="Jogo" grid="12 6 4" placeholder="Informe o jogo..." 
+            model="gsCtrl.save.game" readonly="gsCtrl.tabDelete"></field>
+        <field id="slug" label="Slug" grid="12 6 4" placeholder="Informe o Slug do jogo..." 
+            model="gsCtrl.save.slug" readonly="gsCtrl.tabDelete"></field>
+        <field id="initialDay" label="Dia Inicial" grid="12 6 2" placeholder="Dia Inicial" type="number" 
+            model="gsCtrl.save.initialDay" readonly="gsCtrl.tabDelete"></field>
+        <field id="actualDay" label="Dia Atual" grid="12 6 2" placeholder="Dia atual" type="number" 
+            model="gsCtrl.save.actualDay" readonly="gsCtrl.tabDelete"></field>
     </div>
     <div class="box-footer">
-        <button class="btn btn-primary">Incluir</button>
-        <button class="btn btn-info">Alterar</button>
-        <button class="btn btn-danger">Excluir</button>
-        <button class="btn btn-default">Cancelar</button>
+        <button class="btn btn-primary" ng-click="gsCtrl.create()" ng-if="gsCtrl.tabCreate">Incluir</button>
+        <button class="btn btn-info" ng-click="gsCtrl.update()" ng-if="gsCtrl.tabUpdate">Alterar</button>
+        <button class="btn btn-danger" ng-click="gsCtrl.delete()" ng-if="gsCtrl.tabDelete">Excluir</button>
+        <button class="btn btn-default" ng-click="gsCtrl.refreshSave()">Cancelar</button>
     </div>
 </div>

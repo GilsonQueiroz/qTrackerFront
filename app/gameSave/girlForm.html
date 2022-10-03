@@ -1,0 +1,18 @@
+<div role="form">
+    <div class="box-body">
+        <field id="name" label="Garota" grid="12 6 4" placeholder="Informe o nome da Garota..." 
+            model="gsCtrl.girl.name" readonly="gsCtrl.tabGirlDelete"></field>
+        <field id="desc" label="Atributo" grid="12 6 4" placeholder="Descreva nome da característica da garota..." 
+            model="gsCtrl.girl.desc" readonly="gsCtrl.tabGirlDelete"></field>
+        <field id="initial" label="Valor Inicial" grid="12 6 2" placeholder="Valor Inicial" type="number" 
+            model="gsCtrl.girl.initial" readonly="gsCtrl.tabGirlDelete"></field>
+        <field id="value" label="Valor Atual" grid="12 6 2" placeholder="Valor atual" type="number" 
+            model="gsCtrl.girl.value" readonly="gsCtrl.tabGirlDelete"></field>
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-primary" ng-click="gsCtrl.girlCreate(gsCtrl.save)" ng-if="gsCtrl.tabGirlCreate">Incluir</button>
+        <button class="btn btn-info" ng-click="gsCtrl.girlUpdate(gsCtrl.save)" ng-if="gsCtrl.tabGirlUpdate">Alterar</button>
+        <button class="btn btn-danger" ng-click="gsCtrl.girlDelete(gsCtrl.save)" ng-if="gsCtrl.tabGirlDelete">Excluir</button>
+        <button class="btn btn-default" ng-click="gsCtrl.refreshGirl(gsCtrl.save)">Cancelar</button>
+    </div>
+</div>

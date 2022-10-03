@@ -1,34 +1,69 @@
 <content-header name="Games" small="Cadastro"></content-header>
 
 <section class="content">
-    <div class="nav-tabs-custom">
+    <div class="nav-tabs-custom" ng-controller="GameSaveCtrl as gsCtrl">
         <ul class="nav nav-tabs">
-            <li>
+            <li ng-if="gsCtrl.tabList" ng-class="{active: gsCtrl.tabList}">
                 <a href data-target="#tabList" data-toggle="tab">
                     <i class="fa fa-bars"></i> Lista
                 </a>
             </li>
-            <li>
+            <li ng-if="gsCtrl.tabCreate">
                 <a href data-target="#tabCreate" data-toggle="tab">
                     <i class="fa fa-plus"></i> Incluir
                 </a>
             </li>
-            <li>
+            <li ng-if="gsCtrl.tabUpdate" ng-class="{active: gsCtrl.tabUpdate}">
                 <a href data-target="#tabUpdate" data-toggle="tab">
                     <i class="fa fa-pencil"></i> Alterar
                 </a>
             </li>
-            <li>
+            <li ng-if="gsCtrl.tabDelete" ng-class="{active: gsCtrl.tabDelete}">
                 <a href data-target="#tabDelete" data-toggle="tab">
                     <i class="fa fa-trash-o"></i> Excluir
                 </a>
             </li>
+
+            <li ng-if="gsCtrl.tabGirlList" ng-class="{active: gsCtrl.tabGirlList}">
+                <a href data-target="#tabGirlList" data-toggle="tab">
+                    <i class="fa fa-bars"></i> Lista (Garotas)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabGirlCreate">
+                <a href data-target="#tabGirlCreate" data-toggle="tab">
+                    <i class="fa fa-plus"></i> Incluir (Garota)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabGirlUpdate" ng-class="{active: gsCtrl.tabGirlUpdate}">
+                <a href data-target="#tabGirlUpdate" data-toggle="tab">
+                    <i class="fa fa-pencil"></i> Alterar (Garota)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabGirlDelete" ng-class="{active: gsCtrl.tabGirlDelete}">
+                <a href data-target="#tabGirlDelete" data-toggle="tab">
+                    <i class="fa fa-trash-o"></i> Excluir (Garota)
+                </a>
+            </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane" id="tabList" ng-include="'gameSave/list.html'"></div>
-            <div class="tab-pane" id="tabCreate" ng-include="'gameSave/form.html'"></div>
-            <div class="tab-pane" id="tabUpdate" ng-include="'gameSave/form.html'"></div>
-            <div class="tab-pane" id="tabDelete" ng-include="'gameSave/form.html'"></div>
+            <div class="tab-pane" id="tabList" ng-include="'gameSave/list.html'" 
+                ng-if="gsCtrl.tabList" ng-class="{active: gsCtrl.tabList}"></div>
+            <div class="tab-pane" id="tabCreate" ng-include="'gameSave/form.html'" 
+                ng-if="gsCtrl.tabCreate"></div>
+            <div class="tab-pane" id="tabUpdate" ng-include="'gameSave/form.html'" 
+                ng-if="gsCtrl.tabUpdate" ng-class="{active: gsCtrl.tabUpdate}"></div>
+            <div class="tab-pane" id="tabDelete" ng-include="'gameSave/form.html'" 
+                ng-if="gsCtrl.tabDelete" ng-class="{active: gsCtrl.tabDelete}"></div>
+
+            <div class="tab-pane" id="tabGirlList" ng-include="'gameSave/girlList.html'" 
+                ng-if="gsCtrl.tabGirlList" ng-class="{active: gsCtrl.tabGirlList}"></div>
+            <div class="tab-pane" id="tabGirlCreate" ng-include="'gameSave/girlForm.html'" 
+                ng-if="gsCtrl.tabGirlCreate"></div>
+            <div class="tab-pane" id="tabGirlUpdate" ng-include="'gameSave/girlForm.html'" 
+                ng-if="gsCtrl.tabGirlUpdate" ng-class="{active: gsCtrl.tabGirlUpdate}"></div>
+            <div class="tab-pane" id="tabGirlDelete" ng-include="'gameSave/GirlForm.html'" 
+                ng-if="gsCtrl.tabGirlDelete" ng-class="{active: gsCtrl.tabGirlDelete}"></div>
+   
         </div>
     </div>
 </section>
