@@ -63,6 +63,59 @@
         }
         //fim de save controllers
 
+        //time controllers
+        vm.refreshTime = function(save) {
+            const timeUrl = `${url}/timeplay?slug=${save.slug}`
+            $http.get(timeUrl).then(function(response) {
+                vm.timeplay = {}
+                vm.save = save
+                vm.timeplays = response.data
+                tabs.show(vm, {tabTimeList: true, tabTimeCreate: true})
+            })
+        }
+        
+        vm.timeCreate = function(save) {
+            const createTimeUrl = `${url}/timeplay`
+            vm.timeplay.slug = save.slug
+            $http.post(createTimeUrl, vm.timeplay).then(function(response) {
+                vm.refreshTime(save)
+                msgs.addSuccess('Operação realizada com sucesso!!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+        }
+
+        vm.showTabTimeUpdate = function(timeplay) {
+            vm.timeplay = timeplay
+            tabs.show(vm, {tabTimeUpdate: true})
+        }
+
+        vm.timeUpdate = function(save) {
+            const updateTimeUrl = `${url}/timeplay/${vm.timeplay._id}`
+            $http.put(updateTimeUrl, vm.timeplay).then(function(response) {
+                vm.refreshTime(save)
+                msgs.addSuccess('Operação realizada com sucesso!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+        }
+
+        vm.showTabTimeDelete = function(timeplay) {
+            vm.timeplay = timeplay
+            tabs.show(vm, {tabTimeDelete: true})
+        }
+
+        vm.timeDelete = function(save) {
+            const deleteTimeUrl = `${url}/timeplay/${vm.timeplay._id}`
+            $http.delete(deleteTimeUrl, vm.timeplay).then(function(response) {
+                vm.refreshTime(save)
+                msgs.addSuccess('Operação realizada com sucesso!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+        }
+        //fim de time controllers
+
         //girl controllers
         vm.refreshGirl = function(save) {
             const girlUrl = `${url}/girl?slug=${save.slug}`
@@ -117,6 +170,114 @@
             })
         }
         //fim de girl controllers
+
+        //varsave controllers
+        vm.refreshVar = function(save) {
+            const varUrl = `${url}/varsave?slug=${save.slug}`
+            $http.get(varUrl).then(function(response) {
+                vm.varsave = {}
+                vm.save = save
+                vm.varsaves = response.data
+                tabs.show(vm, {tabVarList: true, tabVarCreate: true})
+            })
+        }
+        
+        vm.varCreate = function(save) {
+            const createVarUrl = `${url}/varsave`
+            vm.varsave.slug = save.slug
+            $http.post(createVarUrl, vm.varsave).then(function(response) {
+                vm.refreshVar(save)
+                msgs.addSuccess('Operação realizada com sucesso!!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+        }
+
+        vm.showTabVarUpdate = function(varsave) {
+            vm.varsave = varsave
+            tabs.show(vm, {tabVarUpdate: true})
+        }
+
+        vm.varUpdate = function(save) {
+            const updateVarUrl = `${url}/varsave/${vm.varsave._id}`
+            $http.put(updateVarUrl, vm.varsave).then(function(response) {
+                vm.refreshVar(save)
+                msgs.addSuccess('Operação realizada com sucesso!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+
+        }
+
+        vm.showTabVarDelete = function(varsave) {
+            vm.varsave = varsave
+            tabs.show(vm, {tabVarDelete: true})
+        }
+
+        vm.varDelete = function(save) {
+            const deleteVarUrl = `${url}/varsave/${vm.varsave._id}`
+            $http.delete(deleteVarUrl, vm.varsave).then(function(response) {
+                vm.refreshVar(save)
+                msgs.addSuccess('Operação realizada com sucesso!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+        }
+        //fim de varsave controllers
+
+        //Task controllers
+        vm.refreshTask = function(save) {
+            const taskUrl = `${url}/task?slug=${save.slug}`
+            $http.get(taskUrl).then(function(response) {
+                vm.task = {}
+                vm.save = save
+                vm.tasks = response.data
+                tabs.show(vm, {tabTaskList: true, tabTaskCreate: true})
+            })
+        }
+        
+        vm.taskCreate = function(save) {
+            const createTaskUrl = `${url}/task`
+            vm.task.slug = save.slug
+            $http.post(createTaskUrl, vm.task).then(function(response) {
+                vm.refreshTask(save)
+                msgs.addSuccess('Operação realizada com sucesso!!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+        }
+
+        vm.showTabTaskUpdate = function(task) {
+            vm.task = task
+            tabs.show(vm, {tabTaskUpdate: true})
+        }
+
+        vm.taskUpdate = function(save) {
+            const updateTaskUrl = `${url}/task/${vm.task._id}`
+            $http.put(updateTaskUrl, vm.task).then(function(response) {
+                vm.refreshTask(save)
+                msgs.addSuccess('Operação realizada com sucesso!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+
+        }
+
+        vm.showTabTaskDelete = function(task) {
+            vm.task = task
+            tabs.show(vm, {tabTaskDelete: true})
+        }
+
+        vm.taskDelete = function(save) {
+            const deleteTaskUrl = `${url}/task/${vm.task._id}`
+            $http.delete(deleteTaskUrl, vm.task).then(function(response) {
+                vm.refreshTask(save)
+                msgs.addSuccess('Operação realizada com sucesso!')
+            }).catch(function(response){
+                msgs.addError(response.data.errors)
+            })
+        }
+        //fim de tasks controllers
 
         vm.refreshSave()
     }

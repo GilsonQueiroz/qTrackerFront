@@ -1,0 +1,14 @@
+<div role="form">
+    <div class="box-body">
+        <field id="timeName" label="Período" grid="12 6 4" placeholder="Informe o período..." 
+            model="gsCtrl.timeplay.timeName" readonly="gsCtrl.tabTimeDelete"></field>
+        <field id="timeOrder" label="Ordem" grid="12 6 2" placeholder="Ordem" type="number" 
+            model="gsCtrl.timeplay.timeOrder" readonly="gsCtrl.tabTimeDelete"></field>
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-primary" ng-click="gsCtrl.timeCreate(gsCtrl.save)" ng-if="gsCtrl.tabTimeCreate">Incluir</button>
+        <button class="btn btn-info" ng-click="gsCtrl.timeUpdate(gsCtrl.save)" ng-if="gsCtrl.tabTimeUpdate">Alterar</button>
+        <button class="btn btn-danger" ng-click="gsCtrl.timeDelete(gsCtrl.save)" ng-if="gsCtrl.tabTimeDelete">Excluir</button>
+        <button class="btn btn-default" ng-click="gsCtrl.refreshTime(gsCtrl.save)">Cancelar</button>
+    </div>
+</div>

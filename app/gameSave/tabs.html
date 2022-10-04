@@ -44,6 +44,69 @@
                     <i class="fa fa-trash-o"></i> Excluir (Garota)
                 </a>
             </li>
+
+            <li ng-if="gsCtrl.tabTimeList" ng-class="{active: gsCtrl.tabTimeList}">
+                <a href data-target="#tabTimeList" data-toggle="tab">
+                    <i class="fa fa-bars"></i> Lista (Períodos)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabTimeCreate">
+                <a href data-target="#tabTimeCreate" data-toggle="tab">
+                    <i class="fa fa-plus"></i> Incluir (Período)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabTimeUpdate" ng-class="{active: gsCtrl.tabTimeUpdate}">
+                <a href data-target="#tabTimeUpdate" data-toggle="tab">
+                    <i class="fa fa-pencil"></i> Alterar (Período)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabTimeDelete" ng-class="{active: gsCtrl.tabTimeDelete}">
+                <a href data-target="#tabTimeDelete" data-toggle="tab">
+                    <i class="fa fa-trash-o"></i> Excluir (Período)
+                </a>
+            </li>
+
+            <li ng-if="gsCtrl.tabVarList" ng-class="{active: gsCtrl.tabVarList}">
+                <a href data-target="#tabVarList" data-toggle="tab">
+                    <i class="fa fa-bars"></i> Lista (Itens)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabVarCreate">
+                <a href data-target="#tabVarCreate" data-toggle="tab">
+                    <i class="fa fa-plus"></i> Incluir (Item)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabVarUpdate" ng-class="{active: gsCtrl.tabVarUpdate}">
+                <a href data-target="#tabVarUpdate" data-toggle="tab">
+                    <i class="fa fa-pencil"></i> Alterar (Item)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabVarDelete" ng-class="{active: gsCtrl.tabVarDelete}">
+                <a href data-target="#tabVarDelete" data-toggle="tab">
+                    <i class="fa fa-trash-o"></i> Excluir (Item)
+                </a>
+            </li>
+
+            <li ng-if="gsCtrl.tabTaskList" ng-class="{active: gsCtrl.tabTaskList}">
+                <a href data-target="#tabTaskList" data-toggle="tab">
+                    <i class="fa fa-bars"></i> Lista (Tarefas)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabTaskCreate">
+                <a href data-target="#tabTaskCreate" data-toggle="tab">
+                    <i class="fa fa-plus"></i> Incluir (Tarefa)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabTaskUpdate" ng-class="{active: gsCtrl.tabTaskUpdate}">
+                <a href data-target="#tabTaskUpdate" data-toggle="tab">
+                    <i class="fa fa-pencil"></i> Alterar (Tarefa)
+                </a>
+            </li>
+            <li ng-if="gsCtrl.tabTaskDelete" ng-class="{active: gsCtrl.tabTaskDelete}">
+                <a href data-target="#tabTaskDelete" data-toggle="tab">
+                    <i class="fa fa-trash-o"></i> Excluir (Tarefa)
+                </a>
+            </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane" id="tabList" ng-include="'gameSave/list.html'" 
@@ -61,9 +124,36 @@
                 ng-if="gsCtrl.tabGirlCreate"></div>
             <div class="tab-pane" id="tabGirlUpdate" ng-include="'gameSave/girlForm.html'" 
                 ng-if="gsCtrl.tabGirlUpdate" ng-class="{active: gsCtrl.tabGirlUpdate}"></div>
-            <div class="tab-pane" id="tabGirlDelete" ng-include="'gameSave/GirlForm.html'" 
+            <div class="tab-pane" id="tabGirlDelete" ng-include="'gameSave/girlForm.html'" 
                 ng-if="gsCtrl.tabGirlDelete" ng-class="{active: gsCtrl.tabGirlDelete}"></div>
    
+            <div class="tab-pane" id="tabTimeList" ng-include="'gameSave/timeList.html'" 
+                ng-if="gsCtrl.tabTimeList" ng-class="{active: gsCtrl.tabTimeList}"></div>
+            <div class="tab-pane" id="tabTimeCreate" ng-include="'gameSave/timeForm.html'" 
+                ng-if="gsCtrl.tabTimeCreate"></div>
+            <div class="tab-pane" id="tabTimeUpdate" ng-include="'gameSave/timeForm.html'" 
+                ng-if="gsCtrl.tabTimeUpdate" ng-class="{active: gsCtrl.tabTimeUpdate}"></div>
+            <div class="tab-pane" id="tabTimeDelete" ng-include="'gameSave/timeForm.html'" 
+                ng-if="gsCtrl.tabTimeDelete" ng-class="{active: gsCtrl.tabTimeDelete}"></div>
+
+            <div class="tab-pane" id="tabVarList" ng-include="'gameSave/varList.html'" 
+                ng-if="gsCtrl.tabVarList" ng-class="{active: gsCtrl.tabVarList}"></div>
+            <div class="tab-pane" id="tabVarCreate" ng-include="'gameSave/varForm.html'" 
+                ng-if="gsCtrl.tabVarCreate"></div>
+            <div class="tab-pane" id="tabVarUpdate" ng-include="'gameSave/varForm.html'" 
+                ng-if="gsCtrl.tabVarUpdate" ng-class="{active: gsCtrl.tabVarUpdate}"></div>
+            <div class="tab-pane" id="tabVarDelete" ng-include="'gameSave/varForm.html'" 
+                ng-if="gsCtrl.tabVarDelete" ng-class="{active: gsCtrl.tabVarDelete}"></div>
+
+            <div class="tab-pane" id="tabTaskList" ng-include="'gameSave/taskList.html'" 
+                ng-if="gsCtrl.tabTaskList" ng-class="{active: gsCtrl.tabTaskList}"></div>
+            <div class="tab-pane" id="tabTaskCreate" ng-include="'gameSave/taskForm.html'" 
+                ng-if="gsCtrl.tabTaskCreate"></div>
+            <div class="tab-pane" id="tabTaskUpdate" ng-include="'gameSave/taskForm.html'" 
+                ng-if="gsCtrl.tabTaskUpdate" ng-class="{active: gsCtrl.tabTaskUpdate}"></div>
+            <div class="tab-pane" id="tabTaskDelete" ng-include="'gameSave/taskForm.html'" 
+                ng-if="gsCtrl.tabTaskDelete" ng-class="{active: gsCtrl.tabTaskDelete}"></div>
+
         </div>
     </div>
 </section>

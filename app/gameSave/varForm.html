@@ -1,0 +1,18 @@
+<div role="form">
+    <div class="box-body">
+        <field id="name" label="Item / Variável" grid="12 6 4" placeholder="Informe o que vai ser monitorado..." 
+            model="gsCtrl.varsave.name" readonly="gsCtrl.tabVarDelete"></field>
+        <field id="icon" label="Icone" grid="12 6 4" placeholder="Informe Icon do frontawesome..." 
+            model="gsCtrl.varsave.icon" readonly="gsCtrl.tabVarDelete"></field>
+        <field id="initial" label="Valor Inicial" grid="12 6 2" placeholder="Valor Inicial" type="number" 
+            model="gsCtrl.varsave.initial" readonly="gsCtrl.tabVarDelete"></field>
+        <field id="value" label="Valor Atual" grid="12 6 2" placeholder="Valor atual" type="number" 
+            model="gsCtrl.varsave.value" readonly="gsCtrl.tabVarDelete"></field>
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-primary" ng-click="gsCtrl.varCreate(gsCtrl.save)" ng-if="gsCtrl.tabVarCreate">Incluir</button>
+        <button class="btn btn-info" ng-click="gsCtrl.varUpdate(gsCtrl.save)" ng-if="gsCtrl.tabVarUpdate">Alterar</button>
+        <button class="btn btn-danger" ng-click="gsCtrl.varDelete(gsCtrl.save)" ng-if="gsCtrl.tabVarDelete">Excluir</button>
+        <button class="btn btn-default" ng-click="gsCtrl.refreshVar(gsCtrl.save)">Cancelar</button>
+    </div>
+</div>

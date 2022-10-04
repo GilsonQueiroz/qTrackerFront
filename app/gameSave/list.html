@@ -12,13 +12,13 @@
                 <td>{{ save.game }}</td>
                 <td>{{ save.slug }}</td>
                 <td class="table-actions">
-                    <button class="btn btn-info">
+                    <button class="btn btn-info" ng-click="gsCtrl.refreshTime(save)">
                         <i class="fa-solid fa-calendar-days"></i></button>
                     <button class="btn btn-info" ng-click="gsCtrl.refreshGirl(save)">
                         <i class="fa-solid fa-user"></i></button>
-                    <button class="btn btn-info">
+                    <button class="btn btn-info" ng-click="gsCtrl.refreshVar(save)">
                         <i class="fa-solid fa-boxes-packing"></i></button>
-                    <button class="btn btn-info">
+                    <button class="btn btn-info" ng-click="gsCtrl.refreshTask(save)">
                         <i class="fa-solid fa-list-check"></i></button>
                     <button class="btn btn-warning" ng-click="gsCtrl.showTabUpdate(save)">
                         <i class="fa fa-pencil"></i></button>
