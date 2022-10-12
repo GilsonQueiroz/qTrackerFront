@@ -4,7 +4,7 @@ angular.module('primeiraApp').config([
   function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('dashboard', {
       url: "/dashboard",
-      templateUrl: "dashboard/dashboard.html"
+      templateUrl: "dashboard/dashtabs.html"
     }).state('gameSave', {
       url: "/gameSave?page",
       templateUrl: "gameSave/tabs.html"

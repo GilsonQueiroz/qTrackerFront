@@ -18,7 +18,7 @@ angular.module('primeiraApp').component('girlBox', {
     <div class="{{ $ctrl.gridClasses }}">
         <div class="box box-widget widget-user">
             <div class="widget-user-header {{ $ctrl.colorClass }}">
-                <h4 class="widget-user-username">{{ $ctrl.name }}</h4>
+                <h5 class="widget-user-username">{{ $ctrl.name }}</h5>
             </div>
             <div class="widget-user-image">
                 <img class="img-circle" src="/assets/{{ $ctrl.name }}.png" alt="User Avatar">

@@ -1,0 +1,31 @@
+<div class="col-xs-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código Tarefa</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="require in gsCtrl.task.requirements">
+                <td>
+                    <input ng-model="require.codTask" class="form-control" placeholder="Informe Tarefa requerida"
+                        ng-readonly="gsCtrl.tabTaskDelete" />
+                </td>
+                <td>
+                    <input ng-model="require.taskComplete" class="form-control" placeholder="Informe false..."
+                        ng-readonly="gsCtrl.tabTaskDelete" />
+                </td>
+                <td class="table-mini-actions">
+                    <button class="btn btn-success" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.addReq($index)">
+                        <i class="fa fa-plus"></i></button>
+                    <button class="btn btn-warning" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.cloneReq($index, require)">
+                        <i class="fa fa-clone"></i></button>
+                    <button class="btn btn-danger" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.deleteReq($index)">
+                        <i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

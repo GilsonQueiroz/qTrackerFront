@@ -1,0 +1,17 @@
+<div class="box-body">
+    <table class="table">
+        <thread>
+            <tr>
+                <th>Games</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr ng-repeat="save in dbCtrl.saves">
+                <td>
+                    <button class="btn btn-default" ng-click="dbCtrl.dashboard(save)">
+                        {{ save.game }}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

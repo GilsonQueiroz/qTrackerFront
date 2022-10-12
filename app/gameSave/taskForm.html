@@ -4,20 +4,44 @@
             model="gsCtrl.task.codTask" readonly="gsCtrl.tabTaskDelete"></field>
         <field id="quest" label="Nome da Quest" grid="12 6 4" placeholder="Nome da quest..." 
             model="gsCtrl.task.quest" readonly="gsCtrl.tabTaskDelete"></field>
-        <field id="task" label="Tarefa" grid="12 6" placeholder="Descreva a tarefa a ser realizada..." 
+        <field id="task" label="Tarefa" grid="12 6 4" placeholder="Descreva a tarefa a ser realizada..." 
             model="gsCtrl.task.task" readonly="gsCtrl.tabTaskDelete"></field>
-
         <field id="minDay" label="Dia mínimo" grid="12 6 2" placeholder="Dia inicial" type="number" 
             model="gsCtrl.task.minDay" readonly="gsCtrl.tabTaskDelete"></field>
-        <field id="taskRepeat" label="Repetível" grid="12 6 2" placeholder=""
+
+        <field id="nextDay" label="Próximo Dia" grid="6 4 2" placeholder="Dia" type="number" 
+            model="gsCtrl.task.nextDay" readonly="gsCtrl.tabTaskDelete"></field>
+        <field id="taskRepeat" label="Repetível" grid="6 4 2" placeholder="true ou false..."
             model="gsCtrl.task.taskRepeat" readonly="gsCtrl.tabTaskDelete"></field>
-        <field id="interval" label="Intervalo" grid="12 6 2" placeholder="Saltar" type="number" 
+        <field id="interval" label="Intervalo" grid="6 4 2" placeholder="Saltar" type="number" 
             model="gsCtrl.task.interval" readonly="gsCtrl.tabTaskDelete"></field>
-        <field id="maxDay" label="Dia máximo" grid="12 6 2" placeholder="Dia Final" type="number" 
+        <field id="maxDay" label="Dia máximo" grid="6 4 2" placeholder="9999" type="number" 
             model="gsCtrl.task.maxDay" readonly="gsCtrl.tabTaskDelete"></field>
-        <field id="lastDay" label="Dia anterior" grid="12 6 2" placeholder="Dia" type="number" 
-            model="gsCtrl.task.lastDay" readonly="gsCtrl.tabTaskDelete"></field>
+        <field id="taskComplete" label="Completo" grid="6 4 2" placeholder="false..."
+            model="gsCtrl.task.taskComplete" readonly="gsCtrl.tabTaskDelete"></field>
+        <field id="taskDisponible" label="Disponível" grid="6 4 2" placeholder="true..."
+            model="gsCtrl.task.taskDisponible" readonly="gsCtrl.tabTaskDelete"></field>
+
+        <field id="taskRequire" label="Requisitos" grid="12 6" placeholder="Listar Requisitos..."
+            model="gsCtrl.task.taskRequire" readonly="gsCtrl.tabTaskDelete"></field>
+        <field id="updates" label="Afeta" grid="12 6" placeholder="Garotas e itens afetados..."
+            model="gsCtrl.task.updates" readonly="gsCtrl.tabTaskDelete"></field>
+    
+
+        <div class="col-xs-12 col-sm-6">
+            <fieldset>
+                <legend>Encontros</legend>
+                <div ng-include="'gameSave/taskTimeList.html'"></div>
+            </fieldset>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <fieldset>
+                <legend>Requisitos</legend>
+                <div ng-include="'gameSave/taskReqList.html'"></div>
+            </fieldset>
+        </div>
     </div>
+
     <div class="box-footer">
         <button class="btn btn-primary" ng-click="gsCtrl.taskCreate(gsCtrl.save)" ng-if="gsCtrl.tabTaskCreate">Incluir</button>
         <button class="btn btn-info" ng-click="gsCtrl.taskUpdate(gsCtrl.save)" ng-if="gsCtrl.tabTaskUpdate">Alterar</button>

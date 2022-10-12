@@ -1,0 +1,36 @@
+<div class="col-xs-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cod</th>
+                <th>Período</th>
+                <th>Local</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="date in gsCtrl.task.timeLocals">
+                <td>
+                    <input ng-model="date.time" class="form-control" type="Number"
+                        ng-readonly="gsCtrl.tabTaskDelete" style="width: 65px;" />
+                </td>
+                <td>
+                    <input ng-model="gsCtrl.timeplays[date.time - 1].timeName" class="form-control" placeholder="Informe período no Cod"
+                        readonly=true />
+                </td>
+                <td>
+                    <input ng-model="date.local" class="form-control" placeholder="Informe local"
+                        ng-readonly="gsCtrl.tabTaskDelete" />
+                </td>
+                <td class="table-mini-actions">
+                    <button class="btn btn-success" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.addDate($index)">
+                        <i class="fa fa-plus"></i></button>
+                    <button class="btn btn-warning" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.cloneDate($index, date)">
+                        <i class="fa fa-clone"></i></button>
+                    <button class="btn btn-danger" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.deleteDate($index)">
+                        <i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

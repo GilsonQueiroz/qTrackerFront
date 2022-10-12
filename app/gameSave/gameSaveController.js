@@ -152,7 +152,6 @@
             }).catch(function(response){
                 msgs.addError(response.data.errors)
             })
-
         }
 
         vm.showTabGirlDelete = function(girl) {
@@ -228,10 +227,14 @@
         //Task controllers
         vm.refreshTask = function(save) {
             const taskUrl = `${url}/task?slug=${save.slug}`
+            const timeUrl = `${url}/timeplay?slug=${save.slug}`
             $http.get(taskUrl).then(function(response) {
-                vm.task = {}
+                vm.task = { timeLocals: [{}], requirements: [{}], girlUpdates: [{}], varUpdates: [{}] }
                 vm.save = save
                 vm.tasks = response.data
+                $http.get(timeUrl).then(function(response) { 
+                    vm.timeplays = response.data
+                })
                 tabs.show(vm, {tabTaskList: true, tabTaskCreate: true})
             })
         }
@@ -276,6 +279,34 @@
             }).catch(function(response){
                 msgs.addError(response.data.errors)
             })
+        }
+
+        vm.addDate = function(index){
+            vm.task.timeLocals.splice(index + 1, 0, {})
+        }
+
+        vm.cloneDate = function(index, {time, local}){
+            vm.task.timeLocals.splice(index + 1, 0, {time, local})
+        }
+
+        vm.deleteDate = function(index){
+            if (vm.task.timeLocals.length > 1) {
+                vm.task.timeLocals.splice(index, 1)
+            }
+        }
+
+        vm.addReq = function(index){
+            vm.task.requirements.splice(index + 1, 0, {})
+        }
+
+        vm.cloneReq = function(index, {codTask, taskComplete}){
+            vm.task.requirements.splice(index + 1, 0, {codTask, taskComplete})
+        }
+
+        vm.deleteReq = function(index){
+            if (vm.task.requirements.length > 1) {
+                vm.task.requirements.splice(index, 1)
+            }
         }
         //fim de tasks controllers
 

@@ -1,10 +1,78 @@
-<content-header name="Game" small="Quest Tracker"></content-header>
+<div role="form">
+    <div class="box-body">
+        <div class="col-xs-12 col-sm-12 col-md-2">
+            <h4>{{ dbCtrl.save.game }}</h4>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-1">
+            <h5>Dia atual: </h5>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-1">
+            <input id="actualDay" class="form-control" type="Number" ng-model="dbCtrl.save.actualDay" min="{{ dbCtrl.save.initialDay }}" />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-1">
+            <h5>Período: </h5>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-1">
+            <input id="actualTime" class="form-control" type="Number" ng-model="dbCtrl.save.actualTime" 
+                min="1" max="{{ dbCtrl.max }}" />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-2">
+            <input id="period" class="form-control" value="{{ dbCtrl.timeplays[dbCtrl.save.actualTime - 1].timeName }}" />
+        </div>
 
-<section class="content" ng-controller="DashboardCtrl as dashboard">
+        <div class="col-xs-12 col-sm-6 col-md-2">
+            <button class="btn-sm btn-primary" style="min-width: 150px" ng-click="dbCtrl.update()"> Atualizar </button>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-2">
+            <button class="btn-sm btn-danger" style="min-width: 150px" ng-click="dbCtrl.gamelist()"> Sair </button>
+        </div>
+
+    </div>
+</div>
+
+<div class="box-body">
     <div class="row">
-        <girl-box grid="4 3 2 1" color-class="bg-aqua-active" name="{{ dashboard.girls[0].name }}" value="{{ dashboard.girls[0].value }}" text="{{ dashboard.girls[0].desc }}"></girl-box>
+        <div ng-repeat="girl in dbCtrl.girls">
+            <girl-box grid="4 3 2 1" color-class="bg-aqua-active" name="{{ girl.name }}" 
+                value="{{ girl.value }}" text="{{ girl.desc }}"></girl-box>
+        </div>
     </div>
     <div class="row">
-        <item-box grid="4 3 2 1" color-class="bg-green" icon="{{ dashboard.itens[0].icon }}" value="{{ dashboard.itens[0].value }}" text="{{ dashboard.itens[0].name }}"></item-box>
+        <div ng-repeat="varsave in dbCtrl.varsaves">
+            <item-box grid="4 3 2 1" color-class="bg-green" icon="{{ varsave.icon }}" 
+                value="{{ varsave.value }}" text="{{ varsave.name }}"></item-box>
+        </div>
     </div>
-</section>
+
+    <div class="row">
+        
+    </div>
+
+    <table class="table">
+        <thread>
+            <tr>
+                <th>Quest</th>
+                <th>Tarefa</th>
+                <th>Local</th>
+                <th>Requisitos</th>
+                <th>Afeta</th>
+                <th>Ações</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr ng-repeat="task in dbCtrl.tasks">
+                <td>{{ task.quest }}</td>
+                <td>{{ task.task }}</td>
+                <td>{{ dbCtrl.showLocal(task.timeLocals, dbCtrl.save.actualTime) }}</td>
+                <td>{{ task.taskRequire }}</td>
+                <td>{{ task.updates }}</td>
+                <td class="table-mini-actions">
+                    <button class="btn btn-success" ng-if="task.taskRepeat" ng-click="dbCtrl.tExecute(task)">
+                        <i class="fa-solid fa-repeat"></i></button>
+                    <button class="btn btn-primary" ng-click="dbCtrl.tComplete(task)">
+                        <i class="fa-regular fa-circle-check"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table></div>

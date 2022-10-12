@@ -1,0 +1,22 @@
+<section class="content">
+    <div class="nav-tabs-custom" ng-controller="DashboardCtrl as dbCtrl">
+        <ul class="nav nav-tabs">
+            <li ng-if="dbCtrl.tabGames" ng-class="{active: dbCtrl.tabGames}">
+                <a href data-target="#tabGames" data-toggle="tab">
+                    <i class="fa-solid fa-chess"></i> Games
+                </a>
+            </li>
+            <li ng-if="dbCtrl.tabDash" ng-class="{active: dbCtrl.taDash}">
+                <a href data-target="#tabDash" data-toggle="tab">
+                    <i class="fa-solid fa-list-check"></i> Dashboard
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="tabGames" ng-include="'dashboard/gamelist.html'"
+                ng-if="dbCtrl.tabGames" ng-class="{active: dbCtrl.tabGames}"></div>
+            <div class="tab-pane" id="tabDash" ng-include="'dashboard/dashboard.html'"
+                ng-if="dbCtrl.tabDash" ng-class="{active: dbCtrl.tabDash}"></div>
+        </div>
+    </div>
+</section>
