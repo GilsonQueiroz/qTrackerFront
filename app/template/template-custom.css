@@ -4,6 +4,16 @@ html { background-color: #ecf0f5; }
 .table-actions {width:300px;}
 .table-mini-actions {width:150px;}
 .info-box-icon {width:100%;}
+.nav-tabs-custom>.tab-content {padding-left: 10px;padding-right: 10px;padding-top: 0px;}
+.widget-user .box-footer {padding-top: 25px;padding-bottom: 0px;}  
 .widget-user .widget-user-username {text-align: center; font-size: 20px;}
-.widget-user .widget-user-header {padding-top: 15px; padding-left: 2px; padding-right: 2px; height: 95px;}
-.widget-user .widget-user-image {top: 40px; margin-left: -45px;}
+.widget-user .widget-user-header {padding-top: 5px; padding-left: 2px; padding-right: 2px; height: 85px;}
+.widget-user .widget-user-image {top: 30px; margin-left: -45px;}
+h3 h4 {margin-top: 10px; margin-bottom: 5px;}
+.info-box .box-footer {padding-top: 10px; padding-bottom: 0px;}
+.nav>li>a {padding: 2px 15px;}
+.form-control {height: 28px; padding: 3px 12px;}
+.box-body {padding: 5px 10px;}
+.box {margin-bottom: 5px;}
+.description-block {margin-top: 10px; margin-bottom: 2px;}
+.table>tbody>tr>td {padding: 2px 8px; border-bottom: 1px darkslategray;}

@@ -18,11 +18,11 @@
                         ng-readonly="gsCtrl.tabTaskDelete" />
                 </td>
                 <td class="table-mini-actions">
-                    <button class="btn btn-success" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.addReq($index)">
+                    <button class="btn btn-success" ng-disabled="gsCtrl.tabTaskDelete" ng-click="gsCtrl.addReq($index)">
                         <i class="fa fa-plus"></i></button>
-                    <button class="btn btn-warning" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.cloneReq($index, require)">
+                    <button class="btn btn-warning" ng-disabled="gsCtrl.tabTaskDelete" ng-click="gsCtrl.cloneReq($index, require)">
                         <i class="fa fa-clone"></i></button>
-                    <button class="btn btn-danger" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.deleteReq($index)">
+                    <button class="btn btn-danger" ng-disabled="gsCtrl.tabTaskDelete" ng-click="gsCtrl.deleteReq($index)">
                         <i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>

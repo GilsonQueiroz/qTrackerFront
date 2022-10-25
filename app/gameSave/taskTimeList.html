@@ -23,11 +23,11 @@
                         ng-readonly="gsCtrl.tabTaskDelete" />
                 </td>
                 <td class="table-mini-actions">
-                    <button class="btn btn-success" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.addDate($index)">
+                    <button class="btn btn-success" ng-disabled="gsCtrl.tabTaskDelete" ng-click="gsCtrl.addDate($index)">
                         <i class="fa fa-plus"></i></button>
-                    <button class="btn btn-warning" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.cloneDate($index, date)">
+                    <button class="btn btn-warning" ng-disabled="gsCtrl.tabTaskDelete" ng-click="gsCtrl.cloneDate($index, date)">
                         <i class="fa fa-clone"></i></button>
-                    <button class="btn btn-danger" ng-class="{disabled: gsCtrl.tabTaskDelete}" ng-click="gsCtrl.deleteDate($index)">
+                    <button class="btn btn-danger" ng-disabled="gsCtrl.tabTaskDelete" ng-click="gsCtrl.deleteDate($index)">
                         <i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>

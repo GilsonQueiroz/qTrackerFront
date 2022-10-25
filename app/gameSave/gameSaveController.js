@@ -1,12 +1,13 @@
 (function(){
     angular.module('primeiraApp').controller('GameSaveCtrl', [
         '$http',
+        '$location',
         'msgs',
         'tabs',
         GameSaveController
     ])
 
-    function GameSaveController($http, msgs, tabs) {
+    function GameSaveController($http, $location, msgs, tabs) {
 
         const vm = this
         const url = 'http://localhost:3003/api'
@@ -225,8 +226,23 @@
         //fim de varsave controllers
 
         //Task controllers
-        vm.refreshTask = function(save) {
-            const taskUrl = `${url}/task?slug=${save.slug}`
+        vm.paginator = function(totalPages, page){
+            const pages = parseInt(totalPages) || 1
+            vm.pagesArray = Array(pages).fill(0).map((e, i) => i+1)
+            
+            vm.page = parseInt(page) || 1
+            vm.needPagination = pages > 1
+            vm.hasPrev = vm.page > 1
+            vm.hasNext = vm.page < pages
+
+            vm.isCurrent = function(i) {
+                return vm.page == i
+            }
+        }
+
+        vm.refreshTask = function(save, page) {
+            vm.page = page
+            const taskUrl = `${url}/task?slug=${save.slug}&sort=codTask&skip=${(page - 1) * 15}&limit=15`
             const timeUrl = `${url}/timeplay?slug=${save.slug}`
             $http.get(taskUrl).then(function(response) {
                 vm.task = { timeLocals: [{}], requirements: [{}], girlUpdates: [{}], varUpdates: [{}] }
@@ -235,7 +251,12 @@
                 $http.get(timeUrl).then(function(response) { 
                     vm.timeplays = response.data
                 })
-                tabs.show(vm, {tabTaskList: true, tabTaskCreate: true})
+
+                $http.get(`${url}/task/count?slug=${save.slug}`).then(function(response){
+                    vm.pages = Math.ceil(response.data.value / 15)
+                    vm.paginator(vm.pages, vm.page)
+                    tabs.show(vm, {tabTaskList: true, tabTaskCreate: true})
+                })
             })
         }
         
@@ -243,7 +264,7 @@
             const createTaskUrl = `${url}/task`
             vm.task.slug = save.slug
             $http.post(createTaskUrl, vm.task).then(function(response) {
-                vm.refreshTask(save)
+                vm.refreshTask(save, 1)
                 msgs.addSuccess('Operação realizada com sucesso!!')
             }).catch(function(response){
                 msgs.addError(response.data.errors)
@@ -258,7 +279,7 @@
         vm.taskUpdate = function(save) {
             const updateTaskUrl = `${url}/task/${vm.task._id}`
             $http.put(updateTaskUrl, vm.task).then(function(response) {
-                vm.refreshTask(save)
+                vm.refreshTask(save, 1)
                 msgs.addSuccess('Operação realizada com sucesso!')
             }).catch(function(response){
                 msgs.addError(response.data.errors)
@@ -274,7 +295,7 @@
         vm.taskDelete = function(save) {
             const deleteTaskUrl = `${url}/task/${vm.task._id}`
             $http.delete(deleteTaskUrl, vm.task).then(function(response) {
-                vm.refreshTask(save)
+                vm.refreshTask(save, 1)
                 msgs.addSuccess('Operação realizada com sucesso!')
             }).catch(function(response){
                 msgs.addError(response.data.errors)
@@ -286,6 +307,7 @@
         }
 
         vm.cloneDate = function(index, {time, local}){
+            time += 1
             vm.task.timeLocals.splice(index + 1, 0, {time, local})
         }
 

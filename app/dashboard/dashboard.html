@@ -3,29 +3,33 @@
         <div class="col-xs-12 col-sm-12 col-md-2">
             <h4>{{ dbCtrl.save.game }}</h4>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-1">
+        <div class="col-xs-6 col-sm-6 col-md-1">
             <h5>Dia atual: </h5>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-1">
+        <div class="col-xs-6 col-sm-6 col-md-1">
             <input id="actualDay" class="form-control" type="Number" ng-model="dbCtrl.save.actualDay" min="{{ dbCtrl.save.initialDay }}" />
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-1">
+        <div class="col-xs-3 col-sm-3 col-md-1">
             <h5>Período: </h5>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-1">
+        <div class="col-xs-3 col-sm-3 col-md-1">
             <input id="actualTime" class="form-control" type="Number" ng-model="dbCtrl.save.actualTime" 
                 min="1" max="{{ dbCtrl.max }}" />
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
+        <div class="col-xs-6 col-sm-6 col-md-2">
             <input id="period" class="form-control" value="{{ dbCtrl.timeplays[dbCtrl.save.actualTime - 1].timeName }}" />
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <button class="btn-sm btn-primary" style="min-width: 150px" ng-click="dbCtrl.update()"> Atualizar </button>
+        <div class="col-xs-4 col-sm-4 col-md-1">
+            <button class="btn-sm btn-success" style="padding-left: 20px;padding-right: 20px;" ng-click="dbCtrl.nextPeriod()"> Próximo </button>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <button class="btn-sm btn-danger" style="min-width: 150px" ng-click="dbCtrl.gamelist()"> Sair </button>
+        <div class="col-xs-4 col-sm-4 col-md-1">
+            <button class="btn-sm btn-primary" style="padding-left: 20px;padding-right: 20px;" ng-click="dbCtrl.update()"> Atualizar </button>
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-1">
+            <button class="btn-sm btn-danger" style="padding-left: 20px;padding-right: 20px;" ng-click="dbCtrl.gamelist()"> Sair </button>
         </div>
 
     </div>
@@ -34,14 +38,24 @@
 <div class="box-body">
     <div class="row">
         <div ng-repeat="girl in dbCtrl.girls">
-            <girl-box grid="4 3 2 1" color-class="bg-aqua-active" name="{{ girl.name }}" 
-                value="{{ girl.value }}" text="{{ girl.desc }}"></girl-box>
+            <div role="form" class="col-xs-6 col-sm-4 col-md-2 col-lg-1">
+                <div class="box box-widget widget-user form-group">
+                    <girl-box color-class="bg-aqua-active" name="{{ girl.name }}" value="{{ girl.value }}" 
+                    text="{{ girl.desc }}" id="value" type="number" model="girl.value" ></girl-box>
+                    <button class="btn btn-primary" ng-click="dbCtrl.girlUpdate(girl)" style="width: 100%; padding: 0;">Atualizar</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div ng-repeat="varsave in dbCtrl.varsaves">
-            <item-box grid="4 3 2 1" color-class="bg-green" icon="{{ varsave.icon }}" 
-                value="{{ varsave.value }}" text="{{ varsave.name }}"></item-box>
+            <div role="form" class="col-xs-6 col-sm-4 col-md-2 col-lg-1">
+                <div class="info-box">
+                    <item-box color-class="bg-green" icon="{{ varsave.icon }}" value="{{ varsave.value }}" 
+                        text="{{ varsave.name }}" id="value" type="number" model="varsave.value" ></item-box>
+                    <button class="btn btn-primary" ng-click="dbCtrl.varUpdate(varsave)" style="width: 100%; padding: 0;">Atualizar</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -75,4 +89,20 @@
                 </td>
             </tr>
         </tbody>
-    </table></div>
+    </table>
+    <div class="box-footer clearfix">
+        <ul ng-if="dbCtrl.needPagination" class="pagination pagination-sm no-margin pull-right">
+            <li ng-if="dbCtrl.hasPrev">
+                <a href href ng-click="dbCtrl.dashboard(dbCtrl.save, dbCtrl.page-1)">Anterior</a>
+            </li>
+
+            <li ng-class="{active: dbCtrl.isCurrent(page)}" ng-repeat="page in dbCtrl.pagesArray">
+                <a href ng-click="dbCtrl.dashboard(dbCtrl.save, page)">{{ page }}</a>
+            </li>
+
+            <li ng-if="dbCtrl.hasNext">
+                <a href href ng-click="dbCtrl.dashboard(dbCtrl.save, dbCtrl.page+1)">Próximo</a>
+            </li>
+        </ul>
+    </div>
+</div>

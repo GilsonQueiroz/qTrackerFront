@@ -8,7 +8,7 @@
         <tbody>
             <tr ng-repeat="save in dbCtrl.saves">
                 <td>
-                    <button class="btn btn-default" ng-click="dbCtrl.dashboard(save)">
+                    <button class="btn btn-default" ng-click="dbCtrl.dashboard(save, 1)">
                         {{ save.game }}</button>
                 </td>
             </tr>

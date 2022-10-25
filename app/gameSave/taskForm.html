@@ -9,12 +9,18 @@
         <field id="minDay" label="Dia mínimo" grid="12 6 2" placeholder="Dia inicial" type="number" 
             model="gsCtrl.task.minDay" readonly="gsCtrl.tabTaskDelete"></field>
 
-        <field id="nextDay" label="Próximo Dia" grid="6 4 2" placeholder="Dia" type="number" 
+        <field id="nextDay" label="Próximo Dia" grid="3 2 1" placeholder="Dia" type="number" 
             model="gsCtrl.task.nextDay" readonly="gsCtrl.tabTaskDelete"></field>
-        <field id="taskRepeat" label="Repetível" grid="6 4 2" placeholder="true ou false..."
+        <field id="taskRepeat" label="Repetível" grid="3 2 1" placeholder="true ou false..."
             model="gsCtrl.task.taskRepeat" readonly="gsCtrl.tabTaskDelete"></field>
-        <field id="interval" label="Intervalo" grid="6 4 2" placeholder="Saltar" type="number" 
+        <field id="interval" label="Intervalo" grid="3 2 1" placeholder="Saltar" type="number" 
             model="gsCtrl.task.interval" readonly="gsCtrl.tabTaskDelete"></field>
+        <field id="periodEnd" label="Turno" grid="3 2 1" placeholder="Finaliza"
+            model="gsCtrl.task.periodEnd" readonly="gsCtrl.tabTaskDelete"></field>
+        <field id="group" label="Grupo" grid="6 4 2" placeholder="Se repitir..."
+            model="gsCtrl.task.group" readonly="gsCtrl.tabTaskDelete"></field>
+
+
         <field id="maxDay" label="Dia máximo" grid="6 4 2" placeholder="9999" type="number" 
             model="gsCtrl.task.maxDay" readonly="gsCtrl.tabTaskDelete"></field>
         <field id="taskComplete" label="Completo" grid="6 4 2" placeholder="false..."
@@ -46,6 +52,6 @@
         <button class="btn btn-primary" ng-click="gsCtrl.taskCreate(gsCtrl.save)" ng-if="gsCtrl.tabTaskCreate">Incluir</button>
         <button class="btn btn-info" ng-click="gsCtrl.taskUpdate(gsCtrl.save)" ng-if="gsCtrl.tabTaskUpdate">Alterar</button>
         <button class="btn btn-danger" ng-click="gsCtrl.taskDelete(gsCtrl.save)" ng-if="gsCtrl.tabTaskDelete">Excluir</button>
-        <button class="btn btn-default" ng-click="gsCtrl.refreshTask(gsCtrl.save)">Cancelar</button>
+        <button class="btn btn-default" ng-click="gsCtrl.refreshTask(gsCtrl.save, 1)">Cancelar</button>
     </div>
 </div>
