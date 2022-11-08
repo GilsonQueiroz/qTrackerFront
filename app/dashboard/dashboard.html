@@ -76,11 +76,11 @@
         </thread>
         <tbody>
             <tr ng-repeat="task in dbCtrl.tasks">
-                <td>{{ task.quest }}</td>
-                <td>{{ task.task }}</td>
-                <td>{{ dbCtrl.showLocal(task.timeLocals, dbCtrl.save.actualTime) }}</td>
-                <td>{{ task.taskRequire }}</td>
-                <td>{{ task.updates }}</td>
+                <td ng-class="task.periodEnd ? '' : 'free'">{{ task.quest }}</td>
+                <td ng-class="task.periodEnd ? '' : 'free'">{{ task.task }}</td>
+                <td ng-class="task.periodEnd ? '' : 'free'">{{ dbCtrl.showLocal(task.timeLocals, dbCtrl.save.actualTime) }}</td>
+                <td ng-class="task.periodEnd ? '' : 'free'">{{ task.taskRequire }}</td>
+                <td ng-class="task.periodEnd ? '' : 'free'">{{ task.updates }}</td>
                 <td class="table-mini-actions">
                     <button class="btn btn-success" ng-if="task.taskRepeat" ng-click="dbCtrl.tExecute(task)">
                         <i class="fa-solid fa-repeat"></i></button>
